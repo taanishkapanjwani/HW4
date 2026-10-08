@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus Customs — Website Testing Report</title>
+  <style>
+    :root { --navy:#00356b; --gold:#c6a46b; --ivory:#fbfaf7; --ink:#172538; --muted:#627286; --line:#e4e8ec; --pass:#21734a; --pending:#8a5b13; }
+    * { box-sizing:border-box; } body { margin:0; background:var(--ivory); color:var(--ink); font:16px/1.6 Arial,sans-serif; }
+    header { background:var(--navy); color:white; padding:56px max(24px,8vw); } header p { color:#dce7f2; margin:10px 0 0; }
+    main { margin:0 auto; max-width:920px; padding:34px 24px 70px; } section { background:white; border:1px solid var(--line); border-radius:12px; margin:0 0 24px; padding:26px; box-shadow:0 8px 24px #1839570d; }
+    h1,h2 { line-height:1.15; margin:0; } h1 { font-size:clamp(32px,6vw,58px); } h2 { color:var(--navy); font-size:25px; } .status { border-radius:99px; display:inline-block; font-size:12px; font-weight:bold; letter-spacing:.08em; margin:16px 0 8px; padding:4px 11px; text-transform:uppercase; } .pass { background:#e4f3ea; color:var(--pass); } .pending { background:#fff3d9; color:var(--pending); }
+    figure { background:#f1f3f5; border:1px dashed #aeb9c5; border-radius:8px; margin:18px 0; min-height:120px; padding:28px; text-align:center; } figcaption { color:var(--muted); font-size:14px; }
+    code { background:#f0f3f6; border-radius:4px; padding:2px 5px; } footer { color:var(--muted); font-size:13px; padding-top:4px; }
+  </style>
+</head>
+<body>
+  <header><h1>Campus Customs — Website Testing Report</h1><p>Problem 11 app check · Generated from local verification on October 7, 2026</p></header>
+  <main>
+    <section>
+      <h2>1. Inventory lookup</h2><span class="status pass">Pass — API verified</span>
+      <p>The live FastAPI endpoint returned the real product <strong>Basic Hoodie Big Yale</strong> at <strong>$68.00</strong>. The database contains sizes XS 15, S 5, M 5, L 8, XL 2, and XXL 25; the product detail endpoint returned six inventory rows. The chatbot endpoint also responded successfully with database-backed product information.</p>
+      <figure><figcaption>Screenshot not captured: this environment has no browser or screenshot-capable tool. The API result above is verified; visual chatbot evidence remains pending.</figcaption></figure>
+    </section>
+    <section>
+      <h2>2. Dynamic product search</h2><span class="status pass">Pass — API structure verified</span>
+      <p>Sending “What hoodies do you have?” to <code>/api/chat</code> returned a conversational reply and <strong>27 structured product cards</strong>, including real names, prices, descriptions, and image URLs. The frontend source retains clickable links from those cards to <code>/products/:productId</code>.</p>
+      <figure><figcaption>Screenshot not captured: browser interaction and clicking a generated card could not be visually verified in this environment.</figcaption></figure>
+    </section>
+    <section>
+      <h2>3. Usability improvement</h2><span class="status pending">Not verified — browser screenshot unavailable</span>
+      <p>The Problem 9 product search, category filter, and price sorting controls are present in <code>frontend/src/App.tsx</code>, and the frontend production build passes. A live visual interaction test and screenshot could not be completed because no browser automation or installed browser is available.</p>
+      <figure><figcaption>Screenshot not captured: no browser/Chromium/Playwright tool is available in the execution environment.</figcaption></figure>
+    </section>
+    <section><h2>Technical checks</h2><p>Frontend <code>npm run build</code> passed. FastAPI started successfully on port 8000. <code>/api/products</code> returned 102 products, the product image endpoint returned HTTP 200, the product detail endpoint returned HTTP 200, and the chat endpoint returned HTTP 200. No database changes were made.</p></section>
+    <footer>Evidence limitation: no screenshots are represented as passing evidence. Capture <code>inventory.png</code>, <code>dynamic_search.png</code>, and <code>usability.png</code> in a browser-capable environment to complete the visual portion.</footer>
+  </main>
+</body>
+</html>
