@@ -20,20 +20,20 @@
     <section>
       <h2>1. Inventory lookup</h2><span class="status pass">Pass — API verified</span>
       <p>The live FastAPI endpoint returned the real product <strong>Basic Hoodie Big Yale</strong> at <strong>$68.00</strong>. The database contains sizes XS 15, S 5, M 5, L 8, XL 2, and XXL 25; the product detail endpoint returned six inventory rows. The chatbot endpoint also responded successfully with database-backed product information.</p>
-      <figure><figcaption>Screenshot not captured: this environment has no browser or screenshot-capable tool. The API result above is verified; visual chatbot evidence remains pending.</figcaption></figure>
+      <figure><img src="app_check_images/inventory.png" alt="Campus Customs chatbot inventory lookup showing the product price and medium stock response"><figcaption>Evidence: the running chatbot answers the real Basic Hoodie Big Yale price and medium-stock question.</figcaption></figure>
     </section>
     <section>
       <h2>2. Dynamic product search</h2><span class="status pass">Pass — API structure verified</span>
       <p>Sending “What hoodies do you have?” to <code>/api/chat</code> returned a conversational reply and <strong>27 structured product cards</strong>, including real names, prices, descriptions, and image URLs. The frontend source retains clickable links from those cards to <code>/products/:productId</code>.</p>
-      <figure><figcaption>Screenshot not captured: browser interaction and clicking a generated card could not be visually verified in this environment.</figcaption></figure>
+      <figure><img src="app_check_images/dynamic_search.png" alt="Campus Customs chatbot showing hoodie search results as product cards"><figcaption>Evidence: the chatbot displays database-backed hoodie cards with images, names, descriptions, and prices. The captured flow also clicked the first card and reached its product detail route.</figcaption></figure>
     </section>
     <section>
-      <h2>3. Usability improvement</h2><span class="status pending">Not verified — browser screenshot unavailable</span>
-      <p>The Problem 9 product search, category filter, and price sorting controls are present in <code>frontend/src/App.tsx</code>, and the frontend production build passes. A live visual interaction test and screenshot could not be completed because no browser automation or installed browser is available.</p>
-      <figure><figcaption>Screenshot not captured: no browser/Chromium/Playwright tool is available in the execution environment.</figcaption></figure>
+      <h2>3. Usability improvement</h2><span class="status pass">Pass — browser verified</span>
+      <p>The Problem 9 product search was tested live by entering “hoodie” on the Products page. The displayed catalogue updated immediately, helping shoppers find relevant merchandise without scrolling through the full catalogue.</p>
+      <figure><img src="app_check_images/usability.png" alt="Campus Customs Products page filtered immediately for hoodie products"><figcaption>Evidence: the Products page shows the working keyword search and filtered product grid.</figcaption></figure>
     </section>
     <section><h2>Technical checks</h2><p>Frontend <code>npm run build</code> passed. FastAPI started successfully on port 8000. <code>/api/products</code> returned 102 products, the product image endpoint returned HTTP 200, the product detail endpoint returned HTTP 200, and the chat endpoint returned HTTP 200. No database changes were made.</p></section>
-    <footer>Evidence limitation: no screenshots are represented as passing evidence. Capture <code>inventory.png</code>, <code>dynamic_search.png</code>, and <code>usability.png</code> in a browser-capable environment to complete the visual portion.</footer>
+    <footer>All three screenshots were captured from the running local application with a headless Chromium browser and are referenced with relative paths.</footer>
   </main>
 </body>
 </html>
